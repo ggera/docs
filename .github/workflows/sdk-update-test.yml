@@ -56,7 +56,6 @@ jobs:
         with:
           files: 'code-examples/core_features/package.json'
           replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
-
       - name: Test style conventions
         working-directory: code-examples/core_features
         run: |
@@ -72,3 +71,11 @@ jobs:
         run: |
           yarn install --frozen
           yarn run ts-node run_core_features.ts
+      - uses: datamonsters/replace-action@v2
+        with:
+          files: 'code-examples/core_features/package.json'
+          replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
+      - uses: datamonsters/replace-action@v2
+        with:
+          files: 'code-examples/core_features/package.json'
+          replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
