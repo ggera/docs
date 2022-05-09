@@ -1,0 +1,71 @@
+name: test-code-examples
+
+on:
+  repository_dispatch:
+    types: [sdk-update]
+    inputs:
+      latestTag:
+        description: "latest SDK tag"
+        required: true
+      previousTag:
+        description: "Previous SDK tag"
+        required: true
+  push:
+    branches:
+      - sdk-update-test
+
+jobs:
+  workshop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+      - uses: datamonsters/replace-action
+        with:
+         files: 'code-examples/workshop/package.json'
+         replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
+      - name: Test style conventions
+        working-directory: code-examples/workshop
+        run: |
+          yarn install --frozen
+          yarn lint
+
+      - name: Run tests
+        timeout-minutes: 60
+        working-directory: code-examples/workshop
+        env:
+          NODE_OPTIONS: --unhandled-rejections=strict
+          FAUCET_SEED: ${{ secrets.PEREGRINE_FAUCET_SEED }}
+        run: |
+          yarn install --frozen
+          yarn run ts-node test.ts
+
+  core_features:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: datamonsters/replace-action
+        with:
+          files: 'code-examples/core_features/package.json'
+          replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
+
+      - name: Test style conventions
+        working-directory: code-examples/core_features
+        run: |
+          yarn install --frozen
+          yarn lint
+
+      - name: Run tests
+        timeout-minutes: 60
+        working-directory: code-examples/core_features
+        env:
+          NODE_OPTIONS: --unhandled-rejections=strict
+          FAUCET_SEED: ${{ secrets.PEREGRINE_FAUCET_SEED }}
+        run: |
+          yarn install --frozen
+          yarn run ts-node run_core_features.ts
