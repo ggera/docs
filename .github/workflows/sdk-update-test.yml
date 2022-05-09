@@ -10,6 +10,10 @@ on:
       previousTag:
         description: "Previous SDK tag"
         required: true
+  push:
+    branches:
+      - test-docs
+
 jobs:
   workshop:
     runs-on: ubuntu-latest
