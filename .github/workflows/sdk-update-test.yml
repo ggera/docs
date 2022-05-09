@@ -1,7 +1,8 @@
 name: test-docs-examples
 
 on:
-  workflow_dispatch:
+  repository_dispatch:
+    types: [sdk-update]
     inputs:
       latestTag:
         default: "0.27.0"
@@ -11,9 +12,6 @@ on:
         default: "0.27.0"
         description: "Previous SDK tag"
         required: true
-  push:
-    branches:
-      - sdk-update-test
 
 jobs:
   workshop:
@@ -92,25 +90,17 @@ jobs:
     needs: [workshop, core_features]
     if: failure()
     steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: deps-14.x
-      - name: set dependencies env
-        run: |
-          echo 'DEPS<<EOF' >> $GITHUB_ENV
-          cat locked_dependencies.txt >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
-      - name: Set date env
-        run: |
-          echo "TODAY=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
       - name: issue-bot
         uses: imjohnbo/issue-bot@v3
         with:
-          labels: 'new sdk ${{ github.event.inputs.latestTag }}is incompatible with docs examples'
+          labels: |
+            :memo:  documentation
+            \U0001F4DA release
+            🧰 sdk
           pinned: false
           close-previous: true
           linked-comments: true
-          title: SDK no longer compatible with latest dependecies
+          title: 'new sdk ${{ github.event.inputs.latestTag }} is incompatible with docs examples'
           body: |-
             ## Incompatibilities detected
             A [webhook test workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) using the latest sdk against docs examples has failed.
