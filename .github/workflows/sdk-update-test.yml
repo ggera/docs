@@ -89,7 +89,7 @@ jobs:
             docs/develop.workshop/*.md
   create_issue:
     runs-on: ubuntu-latest
-    needs: [workshop, core-features]
+    needs: [workshop, core_features]
     if: failure()
     steps:
       - uses: actions/download-artifact@v3
