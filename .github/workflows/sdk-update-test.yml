@@ -1,7 +1,7 @@
 name: test-code-examples
 
 on:
-  repository_dispatch:
+  workflow_dispatch:
     types: [sdk-update]
     inputs:
       latestTag:
@@ -10,10 +10,6 @@ on:
       previousTag:
         description: "Previous SDK tag"
         required: true
-  push:
-    branches:
-      - sdk-update-test
-
 jobs:
   workshop:
     runs-on: ubuntu-latest
@@ -24,6 +20,7 @@ jobs:
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
+          node-version: 16.x
       - uses: datamonsters/replace-action
         with:
          files: 'code-examples/workshop/package.json'
