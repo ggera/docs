@@ -1,8 +1,7 @@
-name: test-code-examples
+name: test-docs-examples
 
 on:
   workflow_dispatch:
-    types: [sdk-update]
     inputs:
       latestTag:
         default: "0.26.0"
@@ -12,9 +11,6 @@ on:
         default: "0.27.0"
         description: "Previous SDK tag"
         required: true
-  push:
-    branches:
-      - sdk-update-test
 
 jobs:
   workshop:
