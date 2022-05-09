@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - uses: datamonsters/replace-action
+      - uses: datamonsters/replace-action@v2
         with:
          files: 'code-examples/workshop/package.json'
          replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
@@ -46,7 +46,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: datamonsters/replace-action
+      - uses: datamonsters/replace-action@v2
         with:
           files: 'code-examples/core_features/package.json'
           replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
