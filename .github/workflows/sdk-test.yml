@@ -1,7 +1,7 @@
 name: test-docs-examples
 
 on:
-  repository_dispatch:
+  workflow_dispatch:
     types: [sdk-update]
     inputs:
       latestTag:
@@ -91,12 +91,11 @@ jobs:
         with:
           labels: |
             :memo:  documentation
-            \U0001F4DA release
-            🧰 sdk
           pinned: false
           close-previous: true
           linked-comments: true
           title: 'new sdk ${{ github.event.inputs.latestTag }} is incompatible with docs examples'
+          repository: ticket
           body: |-
             ## Incompatibilities detected
             A [webhook test workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) using the latest sdk against docs examples has failed.
