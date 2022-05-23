@@ -1,4 +1,4 @@
-import * as Kilt from '@ggera/sdk-js'
+import * as Kilt from '@KILTProtocol/sdk-js'
 
 export async function createPresentation(
   credentialObj: Kilt.ICredential,

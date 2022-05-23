@@ -2,7 +2,7 @@ import { config as envConfig } from 'dotenv'
 
 import { mnemonicGenerate } from '@polkadot/util-crypto'
 
-import * as Kilt from '@ggera/sdk-js'
+import * as Kilt from '@KILTProtocol/sdk-js'
 
 export async function generateAccount(): Promise<{
   account: Kilt.KeyringPair

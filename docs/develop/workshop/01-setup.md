@@ -13,14 +13,14 @@ Any stable (LTS >= 14.0) version is sufficient.
 ## Dependencies
 
 Navigate into your newly created folder `kilt-rocks`, initialize the project and install dependencies.<br/>
-- [KILT SDK-JS](https://github.com/ggera/sdk-js#readme) - for KILT functionality
+- [KILT SDK-JS](https://github.com/KILTProtocol/sdk-js#readme) - for KILT functionality
 - [dotenv](https://github.com/motdotla/dotenv#readme) - to help us load variables from `.env`
 - [ts-node](https://www.npmjs.com/package/ts-node) and [Typescript](https://www.typescriptlang.org/) - to execute our TS code
 
 <!-- When updating this version also update 00-welcome.md! -->
 ```bash npm2yarn
 npm init -y
-npm install @ggera/sdk-js@0.27.0 dotenv ts-node typescript
+npm install @KILTProtocol/sdk-js@0.27.0 dotenv ts-node typescript
 ```
 
 ## Project Folder

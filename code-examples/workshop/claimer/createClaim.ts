@@ -1,4 +1,4 @@
-import * as Kilt from '@ggera/sdk-js'
+import * as Kilt from '@KILTProtocol/sdk-js'
 
 // create a Claim object from lightDid, ctype and given content
 export function createClaim(
