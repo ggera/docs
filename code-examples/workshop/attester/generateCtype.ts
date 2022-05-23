@@ -1,6 +1,6 @@
 import { config as envConfig } from 'dotenv'
 
-import * as Kilt from '@kiltprotocol/sdk-js'
+import * as Kilt from '@ggera/sdk-js'
 
 import { generateKeypairs } from './generateKeypairs'
 import { getAccount } from './generateAccount'

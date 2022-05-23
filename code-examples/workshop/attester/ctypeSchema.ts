@@ -1,4 +1,4 @@
-import * as Kilt from '@kiltprotocol/sdk-js'
+import * as Kilt from '@ggera/sdk-js'
 
 // returns CTYPE from a schema
 export function getCtypeSchema(): Kilt.CType {

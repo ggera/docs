@@ -1,6 +1,6 @@
 import { BN } from '@polkadot/util'
 
-import * as Kilt from '@kiltprotocol/sdk-js'
+import * as Kilt from '@ggera/sdk-js'
 
 import { attestingFlow } from './attester/attestClaim'
 import { createFullDid } from './attester/generateDid'

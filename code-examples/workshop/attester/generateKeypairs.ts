@@ -1,4 +1,4 @@
-import * as Kilt from '@kiltprotocol/sdk-js'
+import * as Kilt from '@ggera/sdk-js'
 
 export async function generateKeypairs(
   keystore: Kilt.Did.DemoKeystore,
