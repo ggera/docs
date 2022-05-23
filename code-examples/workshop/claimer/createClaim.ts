@@ -1,4 +1,4 @@
-import * as Kilt from '@KILTProtocol/sdk-js'
+import * as Kilt from '@kiltprotocol/sdk-js'
 
 // create a Claim object from lightDid, ctype and given content
 export function createClaim(

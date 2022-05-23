@@ -1,4 +1,4 @@
-import * as Kilt from '@KILTProtocol/sdk-js'
+import * as Kilt from '@kiltprotocol/sdk-js'
 
 export async function createPresentation(
   credentialObj: Kilt.ICredential,
