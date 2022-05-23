@@ -1,17 +1,8 @@
 name: test-docs-examples
 
 on:
-  workflow_dispatch:
+  repository_dispatch:
     types: [sdk-update]
-    inputs:
-      latestTag:
-        default: "0.27.0"
-        description: "latest SDK tag"
-        required: true
-      previousTag:
-        default: "0.27.0"
-        description: "Previous SDK tag"
-        required: true
 
 jobs:
   workshop:
@@ -27,7 +18,7 @@ jobs:
       - uses: datamonsters/replace-action@v2
         with:
          files: 'code-examples/workshop/package.json'
-         replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
+         replacements: '${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }}'
       - name: Test style conventions
         working-directory: code-examples/workshop
         run: |
@@ -50,7 +41,7 @@ jobs:
       - uses: datamonsters/replace-action@v2
         with:
           files: 'code-examples/core_features/package.json'
-          replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
+          replacements: '${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }}'
       - name: Test style conventions
         working-directory: code-examples/core_features
         run: |
@@ -73,7 +64,7 @@ jobs:
       - uses: datamonsters/replace-action@v2
         with:
           files: 'docs/develop/workshop/00-welcome.md,docs/develop/workshop/01-setup.md'
-          replacements: '${{ github.event.inputs.previousTag }}=${{ github.event.inputs.latestTag }}'
+          replacements: '${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }}'
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
@@ -94,7 +85,7 @@ jobs:
           pinned: false
           close-previous: true
           linked-comments: true
-          title: 'new sdk ${{ github.event.inputs.latestTag }} is incompatible with docs examples'
+          title: 'new sdk ${{ github.event.client_payload.latestTag }} is incompatible with docs examples'
           repository: ticket
           body: |-
             ## Incompatibilities detected
