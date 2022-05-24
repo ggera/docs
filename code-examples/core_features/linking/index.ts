@@ -53,7 +53,7 @@ export async function runAll(
   if (didWeb3Name) {
     console.log(`DID "${did.did}" associated to the name "${didWeb3Name}"`)
   } else {
-    didWeb3Name = 'test-core-feature-name'
+    didWeb3Name = 'test-core-feature-gera'
     console.log(
       `DID "${did.did}" not associated to any name. Claiming "${didWeb3Name}"...`
     )
