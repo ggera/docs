@@ -75,11 +75,6 @@ jobs:
         run: |
           yarn install
           yarn lint
-      - name: Regenerate yarn lock
-        working-directory: code-examples/workshop
-        run: |
-          yarn install
-          yarn lint
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
