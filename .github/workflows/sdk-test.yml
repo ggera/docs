@@ -79,6 +79,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: sdk-update
+          base: develop
           delete-branch: true
           title: '[Chore] Latest sdk is compatible with docs'
           body: |
