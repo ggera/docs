@@ -66,10 +66,19 @@ jobs:
     if: success()
     steps:
       - uses: actions/checkout@v1
-      - uses: datamonsters/replace-action@v2
+      - uses: jacobtomlinson/gha-find-replace@v2
         with:
-          files: 'docs/develop/workshop/00-welcome.md,docs/develop/workshop/01-setup.md,code-examples/core_features/package.json,code-examples/workshop/package.json'
-          replacements: '${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }},${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }},${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }},${{ github.event.client_payload.previousTag }}=${{ github.event.client_payload.latestTag }}'
+          find: '${{ github.event.client_payload.previousTag }}'
+          replace: '${{ github.event.client_payload.latestTag }}'
+          include: "docs/develop/workshop/**"
+          regex: true
+      - uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: '${{ github.event.client_payload.previousTag }}'
+          replace: '${{ github.event.client_payload.latestTag }}'
+          include: "code-examples/**"
+          exclude: "**/*.lock" 
+          regex: true
       - name: Regenerate yarn lock
         working-directory: code-examples/core_features
         run: |
