@@ -65,6 +65,7 @@ jobs:
     needs: [workshop]
     if: success()
     steps:
+      - uses: actions/checkout@v1
       - uses: datamonsters/replace-action@v2
         with:
           files: 'docs/develop/workshop/00-welcome.md,docs/develop/workshop/01-setup.md,code-examples/core_features/package.json,code-examples/workshop/package.json'
