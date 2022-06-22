@@ -133,10 +133,10 @@ jobs:
         uses: peter-evans/create-issue-from-file@v3
         with:
           title: new sdk ${{ github.event.client_payload.latestTag }} is incompatible with docs examples
-          repository: ggera/ticket
+          repository: KILTProtocol/ticket
           token: ${{ secrets.PAT}}
           content-filepath: .github/ISSUE_TEMPLATE/sdk-incompatible-with-docs.md
-          assignees: ggera
+          assignees: ntn-x2
           labels: |
             :memo:  documentation
             📚+release
@@ -146,6 +146,9 @@ jobs:
         uses: peter-evans/create-or-update-project-card@v2
         with:
           project-name: Weekly Board 📅
+          project-number: 10
+          project-location: KILTProtocol
+          repository: KILTProtocol/ticket
           column-name: To Do
           token: ${{ secrets.PAT}}
           issue-number: ${{ steps.issue.outputs.issue-number }}
