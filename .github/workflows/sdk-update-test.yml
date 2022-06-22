@@ -104,7 +104,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.PAT}}
           base: develop
           delete-branch: true
           title: '[Chore] Update SDK version to latest'
@@ -134,7 +134,7 @@ jobs:
         with:
           title: new sdk ${{ github.event.client_payload.latestTag }} is incompatible with docs examples
           repository: KILTProtocol/ticket
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.PAT}}
           content-filepath: .github/ISSUE_TEMPLATE/sdk-incompatible-with-docs.md
           assignees: ggera
           labels: |
