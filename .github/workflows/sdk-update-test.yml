@@ -133,7 +133,7 @@ jobs:
         uses: peter-evans/create-issue-from-file@v3
         with:
           title: new sdk ${{ github.event.client_payload.latestTag }} is incompatible with docs examples
-          repository: KILTProtocol/ticket
+          repository: ggera/ticket
           token: ${{ secrets.PAT}}
           content-filepath: .github/ISSUE_TEMPLATE/sdk-incompatible-with-docs.md
           assignees: ggera
